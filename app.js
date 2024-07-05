@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'view'))); // To serve static files
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/webserviceDb', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost:27017/webserviceDb', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Routes
 app.use('/users', usersRouter);
